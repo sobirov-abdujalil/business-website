@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 
 export default function ServiceCard({
@@ -62,7 +62,7 @@ export default function ServiceCard({
   const [isFocused, setIsFocused] = useState(false);
 
   // Handle component mount animation
-  useState(() => {
+  useEffect(() => {
     if (animateOnScroll) {
       const timer = setTimeout(() => setIsLoaded(true), animationDelay);
       return () => clearTimeout(timer);

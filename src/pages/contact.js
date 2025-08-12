@@ -253,8 +253,9 @@ export default function Contact() {
                 variant="elevated"
                 size="large"
                 onSubmit={(formData) => {
-                  console.log("Form submitted:", formData);
                   // Handle form submission here
+                  // You can integrate with your preferred form service
+                  // Example: Formspree, Netlify Forms, or custom API
                 }}
                 onSuccess={() => {
                   alert(
@@ -262,7 +263,7 @@ export default function Contact() {
                   );
                 }}
                 onError={(error) => {
-                  console.error("Form error:", error);
+                  // Handle form error
                   alert(
                     "There was an error sending your message. Please try again."
                   );
