@@ -1,0 +1,7 @@
+<svg width="256" height="64" viewBox="0 0 256 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Sample Business Logo -->
+  <rect width="256" height="64" rx="8" fill="#3B82F6"/>
+  <text x="128" y="38" text-anchor="middle" fill="white" font-family="Inter, sans-serif" font-size="20" font-weight="600">BUSINESS</text>
+  <circle cx="40" cy="32" r="12" fill="white"/>
+  <text x="40" y="38" text-anchor="middle" fill="#3B82F6" font-family="Inter, sans-serif" font-size="16" font-weight="700">B</text>
+</svg>

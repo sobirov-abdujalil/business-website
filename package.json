@@ -1,0 +1,72 @@
+{
+  "name": "business-website",
+  "version": "1.0.0",
+  "description": "A modern business website built with Next.js and Tailwind CSS",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "deploy": "bash scripts/deploy.sh",
+    "deploy:build": "bash scripts/deploy.sh --build",
+    "deploy:test": "bash scripts/deploy.sh --test",
+    "deploy:netlify": "bash scripts/deploy.sh --deploy",
+    "deploy:win": "scripts\\deploy.bat",
+    "deploy:win:build": "scripts\\deploy.bat --build",
+    "deploy:win:test": "scripts\\deploy.bat --test",
+    "deploy:win:netlify": "scripts\\deploy.bat --deploy",
+    "analyze": "npm run build && npx @next/bundle-analyzer",
+    "type-check": "tsc --noEmit",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "images:setup": "node scripts/optimize-images.js setup",
+    "images:favicons": "node scripts/optimize-images.js favicons",
+    "images:optimize": "node scripts/optimize-images.js optimize"
+  },
+  "dependencies": {
+    "next": "^14.0.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0",
+    "autoprefixer": "^10.4.0",
+    "eslint": "^8.0.0",
+    "eslint-config-next": "^14.0.0",
+    "postcss": "^8.4.0",
+    "prettier": "^3.0.0",
+    "tailwindcss": "^3.3.0",
+    "@tailwindcss/forms": "^0.5.0",
+    "@tailwindcss/typography": "^0.5.0",
+    "@next/bundle-analyzer": "^14.0.0",
+    "typescript": "^5.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=8.0.0"
+  },
+  "keywords": [
+    "nextjs",
+    "react",
+    "tailwindcss",
+    "business",
+    "website",
+    "responsive",
+    "dark-mode",
+    "seo",
+    "accessibility"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/business-website.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yourusername/business-website/issues"
+  },
+  "homepage": "https://yourdomain.com"
+}
