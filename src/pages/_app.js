@@ -1,4 +1,5 @@
 import { useState, useEffect, createContext, useContext } from "react";
+import { Analytics } from "@vercel/analytics/next";
 import "@/styles/globals.css";
 
 // Create Theme Context
@@ -62,6 +63,7 @@ export default function App({ Component, pageProps }) {
   return (
     <ThemeProvider>
       <Component {...pageProps} />
+      <Analytics />
     </ThemeProvider>
   );
 }

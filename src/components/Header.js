@@ -1,11 +1,13 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { useTheme } from "@/pages/_app";
+import { useAnalytics } from "@/hooks/useAnalytics";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const { theme, toggleTheme, mounted } = useTheme();
+  const { trackThemeChange, trackButtonClick } = useAnalytics();
 
   // Handle scroll effect for header background
   useEffect(() => {
@@ -78,6 +80,12 @@ export default function Header() {
     setIsMenuOpen(!isMenuOpen);
   };
 
+  const handleThemeToggle = () => {
+    const newTheme = theme === "light" ? "dark" : "light";
+    trackThemeChange(newTheme);
+    toggleTheme();
+  };
+
   return (
     <header
       className={`sticky top-0 z-50 transition-all duration-300 ${
@@ -134,7 +142,7 @@ export default function Header() {
             {/* Theme Toggle */}
             {mounted && (
               <button
-                onClick={toggleTheme}
+                onClick={handleThemeToggle}
                 className="relative inline-flex items-center justify-center w-10 h-10 rounded-lg bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 dark:focus:ring-offset-gray-900"
                 aria-label={`Switch to ${
                   theme === "light" ? "dark" : "light"

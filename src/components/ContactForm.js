@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useAnalytics } from "@/hooks/useAnalytics";
 
 export default function ContactForm({
   // Form configuration
@@ -72,6 +73,7 @@ export default function ContactForm({
   // Children for custom content
   children = null,
 }) {
+  const { trackFormSubmission } = useAnalytics();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -229,6 +231,15 @@ export default function ContactForm({
     setErrors({});
 
     try {
+      // Track form submission
+      trackFormSubmission("contact_form", {
+        hasName: !!formData.name,
+        hasEmail: !!formData.email,
+        hasPhone: !!formData.phone,
+        hasSubject: !!formData.subject,
+        hasMessage: !!formData.message,
+      });
+
       if (onSubmit) {
         await onSubmit(formData);
       } else {
@@ -316,8 +327,8 @@ export default function ContactForm({
                 hasError
                   ? "border-red-300 bg-red-50 dark:bg-red-900/20 focus:border-red-500 focus:ring-red-500"
                   : isFocused
-                  ? "border-primary-500 bg-primary-50 dark:bg-primary-900/20 focus:ring-primary-500"
-                  : "border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 focus:border-primary-500 focus:ring-primary-500"
+                    ? "border-primary-500 bg-primary-50 dark:bg-primary-900/20 focus:ring-primary-500"
+                    : "border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 focus:border-primary-500 focus:ring-primary-500"
               }
               focus:outline-none focus:ring-2 focus:ring-opacity-50
               placeholder-gray-500 dark:placeholder-gray-400
@@ -339,8 +350,8 @@ export default function ContactForm({
               fieldName === "email"
                 ? "email"
                 : fieldName === "phone"
-                ? "tel"
-                : "text"
+                  ? "tel"
+                  : "text"
             }
             value={formData[fieldName]}
             onChange={handleChange}
@@ -354,8 +365,8 @@ export default function ContactForm({
                 hasError
                   ? "border-red-300 bg-red-50 dark:bg-red-900/20 focus:border-red-500 focus:ring-red-500"
                   : isFocused
-                  ? "border-primary-500 bg-primary-50 dark:bg-primary-900/20 focus:ring-primary-500"
-                  : "border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 focus:border-primary-500 focus:ring-primary-500"
+                    ? "border-primary-500 bg-primary-50 dark:bg-primary-900/20 focus:ring-primary-500"
+                    : "border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 focus:border-primary-500 focus:ring-primary-500"
               }
               focus:outline-none focus:ring-2 focus:ring-opacity-50
               placeholder-gray-500 dark:placeholder-gray-400
@@ -371,10 +382,10 @@ export default function ContactForm({
               fieldName === "email"
                 ? "email"
                 : fieldName === "phone"
-                ? "tel"
-                : fieldName === "name"
-                ? "name"
-                : undefined
+                  ? "tel"
+                  : fieldName === "name"
+                    ? "name"
+                    : undefined
             }
           />
         )}

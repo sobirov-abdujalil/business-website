@@ -1,5 +1,6 @@
 import { forwardRef } from 'react'
 import Link from 'next/link'
+import { useAnalytics } from '@/hooks/useAnalytics'
 
 const Button = forwardRef(({
   // Content
@@ -36,6 +37,10 @@ const Button = forwardRef(({
   onBlur = null,
   onKeyDown = null,
   
+  // Analytics
+  trackClick = true,
+  buttonName,
+  
   // Accessibility
   ariaLabel = null,
   ariaDescribedBy = null,
@@ -50,6 +55,7 @@ const Button = forwardRef(({
   // Other props
   ...props
 }, ref) => {
+  const { trackButtonClick } = useAnalytics();
   // Size variants
   const sizeVariants = {
     small: {
@@ -229,6 +235,17 @@ const Button = forwardRef(({
       e.preventDefault()
       return
     }
+    
+    // Track button click if enabled
+    if (trackClick && buttonName) {
+      trackButtonClick(buttonName, {
+        variant,
+        size,
+        href,
+        external
+      });
+    }
+    
     onClick?.(e)
   }
 
