@@ -12,6 +12,10 @@ import {
 } from "@/hooks/useAnalytics";
 
 export default function Home() {
+  // Analytics tracking
+  usePageViewTracking("Home");
+  useScrollTracking();
+  useTimeOnPageTracking();
   // Service data
   const services = [
     {
@@ -324,6 +328,7 @@ export default function Home() {
                 href="/services"
                 variant="outline"
                 size="large"
+                buttonName="view_all_services"
                 icon={
                   <svg
                     className="w-5 h-5"
@@ -381,6 +386,7 @@ export default function Home() {
                 href="/about"
                 variant="outline"
                 size="large"
+                buttonName="learn_more_about_us"
                 icon={
                   <svg
                     className="w-5 h-5"
@@ -508,6 +514,7 @@ export default function Home() {
                 href="/contact"
                 variant="secondary"
                 size="large"
+                buttonName="contact_us_today"
                 icon={
                   <svg
                     className="w-5 h-5"
@@ -530,6 +537,7 @@ export default function Home() {
                 href="/services"
                 variant="outline"
                 size="large"
+                buttonName="view_services_cta"
                 className="border-white text-white hover:bg-white hover:text-primary-600"
                 icon={
                   <svg
